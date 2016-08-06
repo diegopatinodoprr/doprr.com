@@ -1,0 +1,60 @@
+<!doctype html>
+<html >
+<head >
+	<title >Socket.IO chat</title >
+	<style >
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font: 13px Helvetica, Arial;
+			background-color: #111111
+		}
+
+		form {
+			background: #000;
+			padding: 3px;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+		}
+
+		#messages {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		#messages li {
+			padding: 2px 2px;
+			color: greenyellow
+		}
+	</style >
+</head >
+<body >
+	<ul id = "messages" ></ul >
+	<script src = "https://cdn.socket.io/socket.io-1.2.0.js" ></script >
+	<script src = "http://code.jquery.com/jquery-1.11.1.js" ></script >
+	<script >
+		var counter = 0
+		var socket = io.connect("http://10.11.1.28:3000");
+		socket.on('logger', function (msg) {
+			counter++
+			$('#messages').append($('<li>').text(msg));
+			autoreset()
+		});
+		function autoreset() {
+			if (counter > 100) {
+				socket.emit('clear')
+				counter=0
+			}
+		}
+		socket.on('clear', function (msg) {
+			$('#messages').html("");
+		});
+	</script >
+</body >
+</html >
