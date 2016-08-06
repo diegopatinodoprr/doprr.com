@@ -3,14 +3,14 @@
  */
 
 
-var socket = io.connect("http://10.11.1.28:3000");
+//var socket = io.connect("http://10.11.1.28:3000");
 var Logger = function () {
 }
 Logger.clear = function () {
-  socket.emit('clear')
+ // socket.emit('clear')
 }
 Logger.log = function (str) {
-  socket.emit('logger', str);
+ // socket.emit('logger', str);
 }
 var Utils = function () {
   Utils.resizer = []
