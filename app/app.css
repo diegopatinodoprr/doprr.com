@@ -5,6 +5,14 @@ html, body {
     overflow: hidden
 }
 
+body {
+    background-image: url('css/bkg1.jpg');
+    background-clip: border-box;
+    background-size: contain;
+    background-repeat: round;
+
+}
+
 .menu {
     list-style: none;
     border-bottom: 0.1em solid black;
@@ -40,12 +48,21 @@ html, body {
     top: 0px;
 }
 
-#moveFloor {
+.moveFloor {
     position: absolute;
-
-
     bottom: 0;
     width: 100%;
+}
+
+.moveFloor div {
+    display: block;
+    width: 1px;
+
+    overflow: hidden;
+
+    background-color: darkcyan;
+    position: absolute;
+    bottom: 0;
 }
 
 #logger {
@@ -59,3 +76,35 @@ html, body {
     width: 150px;
 }
 
+.doprrNom {
+    color: white;
+    font-size: 600%;
+
+}
+
+
+.noselect {
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                           not supported by any browser */
+    outline: 0;
+
+}
+
+#doprrView {
+    display: block;
+    position: relative;
+    /* margin: 100px; */
+    background-color: rgba(1, 1, 1, 0.5);
+    /* width: 100%; */
+    height: 50%;
+    margin: 20px;
+    bottom: -25%;
+
+}
