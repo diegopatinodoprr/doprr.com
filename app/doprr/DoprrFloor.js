@@ -7,7 +7,7 @@ Utils();
 (function () {
   var floorContainer = document.getElementById("moveFloor");
   var divLines = [];
- // Utils.addResizeListen(floorContainer)
+  Utils.addResizeListen(floorContainer)
   function addListeners() {
     floorContainer.addEventListener("mousemove", mouseMoveListener, false);
     floorContainer.addEventListener("load", resizeFloor, false);
@@ -78,5 +78,5 @@ Utils();
     return ((Math.random() * Utils.getActualHeight()) + 10) + "px"
   }
 
-//  init()
+ init()
 })()

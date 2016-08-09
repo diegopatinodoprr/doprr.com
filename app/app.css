@@ -18,7 +18,7 @@ body {
 
 #dynamicBackground {
     position: fixed;
-    z-index: -1;
+
     top: 0px;
 }
 
@@ -26,6 +26,12 @@ body {
     position: absolute;
     bottom: 0;
     width: 100%;
+    z-index: -200;
+}
+@media screen and (max-width: 992px) {
+    .moveFloor{
+        display:none;
+    }
 }
 
 .moveFloor div {
@@ -55,12 +61,8 @@ body {
     font-size: 600%;
 
 }
-#visageInfos{
-
-    top: 10px;
-    right: 20px;
-    height: 150px;
-    ;
+.visageInfos{
+    margin: 50px;
 
 }
 
@@ -93,22 +95,22 @@ body {
 .clor3 {
     background-color: #2b542c;
     color: white;
-    height: 500px;
+
 }
 .clor4 {
     background-color:  #66CC44;
     color: white;
-    height: 500px;
+
 }
 .clor5 {
     background-color: darkred;
     color: white;
-    height: 500px;
+
 }
 .clor6{
     background-color: darkgoldenrod;
     color: white;
-    height: 500px;
+
 }
 
 #doprrView {
