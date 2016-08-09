@@ -6,8 +6,9 @@ html, body {
 }
 
 body {
-    background-image: url('css/bkg1.jpg');
+   /* background-image: url('css/bkg1.jpg');*/
     background-clip: border-box;
+    background-color: white;
     background-size: contain;
     background-repeat: round;
 
@@ -60,7 +61,7 @@ body {
 
     overflow: hidden;
 
-    background-color: darkcyan;
+    background-color: rgba(0,139,139,0.3);
     position: absolute;
     bottom: 0;
 }
@@ -77,8 +78,17 @@ body {
 }
 
 .doprrNom {
-    color: white;
+    color: #337ab7;
     font-size: 600%;
+
+}
+#visageInfos{
+    position: absolute;
+    display: block;
+    top: 10px;
+    right: 20px;
+    height: 150px;
+    ;
 
 }
 
@@ -101,11 +111,15 @@ body {
 #doprrView {
     display: block;
     position: relative;
-    /* margin: 100px; */
-    background-color: rgba(1, 1, 1, 0.5);
-    /* width: 100%; */
+
+    background-color: rgba(255, 255, 255, 0.57);
+
     height: 80%;
     margin: 20px;
     bottom: -10%;
+    border-radius: 6px;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
 
 }
