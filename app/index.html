@@ -31,9 +31,10 @@
 	</div >
 	<div style = "overflow-y: scroll ;height: 100%" >
 		<div class = "row  " >
-			<div class = "col-xs-offset-0     visible-xs " id = "mobileDisplay"  ><div class="visageInfos" ng-controller="faceView" ng-include src="face.getFaceTemplateHtml()"></div> </div >
-			<div class = "hidden-xs col-sm-offset-8 col-md-offset-10 col-lg-offset-10 clor2" ng-controller="faceView" ng-include src="face.getFaceTemplateHtml()" ></div >
 			<div ng-view id = "doprrView" ></div >
+			<div class = "col-xs-12     visible-xs " id = "mobileDisplay"  ><div class="visageInfos" ng-controller="faceView" ng-include src="face.getFaceTemplateHtml()"></div> </div >
+			<div class = "hidden-xs col-sm-offset-8 col-md-offset-10 col-lg-offset-10 clor2" ng-controller="faceView" ng-include src="face.getFaceTemplateHtml()" ></div >
+
 		</div >
 	</div >
 	<div ng-include="faceView"></div>

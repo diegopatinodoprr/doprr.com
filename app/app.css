@@ -3,15 +3,25 @@ html, body {
     margin: 0;
     overflow: hidden;
     height:100%;
+    background-color: #7a0c21;
 }
 
 body {
-   /* background-image: url('css/bkg1.jpg');*/
+
     background-clip: border-box;
-    background-color: white;
+
     background-size: contain;
     background-repeat: round;
 
+}
+.navbar-default .navbar-nav>li>a{
+    color: #7a0c21;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: #66CC44;
+}
+.colorRedDoprr{
+    color: #7a0c21;
 }
 
 
@@ -66,6 +76,13 @@ body {
 
 }
 
+#captionPerso{
+    position: relative;
+}
+.captionPerso{
+    position: relative;
+}
+
 
 .noselect {
 
@@ -113,23 +130,12 @@ body {
 
 }
 
-#doprrView {
-
-    background-color: rgba(255, 255, 255, 0.57);
-
-
-    border-radius: 6px;
-    border-color: white;
-    border-style: solid;
-    border-width: 1px;
-
-}
 #debugDisplay{
     
     height: 200px;
     width: 100%;
     position: absolute;
-    display: block;
+    display: none;
     background-image: url("./css/debug/debug_screen-size.jpg");
     background-size: initial;
     bottom: 0px;
