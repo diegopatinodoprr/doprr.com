@@ -78,5 +78,5 @@ Utils();
     return ((Math.random() * Utils.getActualHeight()) + 10) + "px"
   }
 
- init()
+ //init()
 })()

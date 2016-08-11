@@ -7,7 +7,12 @@ angular.module('doprr.home', ['ngRoute'])
     });
   }])
   .controller('homeCtrl', ['$scope', function ($scope) {
-    console.log('hometttt', $scope)
+  var Draw3D=new DoprrThree()
+
+
+
+    Draw3D.init();
+    Draw3D.animate();
     $scope.doprrOpen = function (dataId) {
       console.log("open : ", dataId)
     }

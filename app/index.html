@@ -29,11 +29,13 @@
 	<div style = "position: fixed" >
 		<span class = "label label-default" onclick = "Logger.clear()" >Effacer log</span >
 	</div >
-	<div style = "overflow-y: scroll ;height: 100%" >
+	<div class="jumbotron"  >
 		<div class = "row  " >
 			<div ng-view id = "doprrView" ></div >
 			<div class = "col-xs-12     visible-xs " id = "mobileDisplay"  ><div class="visageInfos" ng-controller="faceView" ng-include src="face.getFaceTemplateHtml()"></div> </div >
+
 			<div class = "hidden-xs col-sm-offset-8 col-md-offset-10 col-lg-offset-10 clor2" ng-controller="faceView" ng-include src="face.getFaceTemplateHtml()" ></div >
+
 
 		</div >
 	</div >
@@ -56,5 +58,6 @@
 	<script src = "doprr/Tools.js" ></script >
 	<script src = "doprr/Points.js" ></script >
 	<script src = "doprr/DoprrFloor.js" ></script >
+	<script src = "doprr/DoprrThree.js" ></script >
 </body >
 </html >
