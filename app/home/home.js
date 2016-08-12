@@ -10,10 +10,15 @@ angular.module('doprr.home', ['ngRoute'])
   var Draw3D=new DoprrThree()
 
 
-
-    Draw3D.init();
-    Draw3D.animate();
     $scope.doprrOpen = function (dataId) {
       console.log("open : ", dataId)
     }
+    $scope.callBackObje3d=function(data){
+      console.log("avant : ",$scope.control3dModel)
+      $scope.control3dModel=data.name
+      console.log("apres ",$scope.control3dModel)
+    }
+    Draw3D.init($scope.callBackObje3d);
+    Draw3D.animate();
+
   }]);

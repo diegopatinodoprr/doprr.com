@@ -18,7 +18,11 @@
 	<link rel = "stylesheet" href = "bower_components/html5-boilerplate/dist/css/main.css" >
 	<link rel = "stylesheet" href = "app.css" >
 	<script src = "bower_components/three.js/build/three.js" ></script >
+	<script src="bower_components/three.js/examples/js/controls/OrbitControls.js"></script>
+	<script src="bower_components/three.js/examples/js/renderers/Projector.js"></script>
+	<script src="bower_components/three.js/examples/js/renderers/CanvasRenderer.js"></script>
 	<script src = "bower_components/three.js/examples/js/Detector.js" ></script >
+	<script src = "bower_components/three.js/examples/js/libs/stats.min.js" ></script >
 	<script src = "bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js" ></script >
 </head >
 <body onresize = "Utils.updateResizeListeners()" onload = "Utils.updateResizeListeners()" ng-controller="doprrHomeController" >
@@ -39,7 +43,7 @@
 
 		</div >
 	</div >
-	<div ng-include="faceView"></div>
+	<div id="controls3d" ng-controller="controls3D" ng-include src="controls3D.getControls()" style="width: 300px"></div>
 
 
 
@@ -47,6 +51,7 @@
 	<script src = "bower_components/angular-route/angular-route.js" ></script >
 	<script src = "bower_components/jquery/dist/jquery.min.js" ></script >
 	<script src = "bower_components/bootstrap/dist/js/bootstrap.min.js" ></script >
+	<script src = "bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js" ></script >
 	<script src = "bower_components/gsap/src/minified/TweenMax.min.js" ></script >
 	<script src = "https://cdn.socket.io/socket.io-1.4.5.js" ></script >
 	<script src = "app.js" ></script >
@@ -59,5 +64,6 @@
 	<script src = "doprr/Points.js" ></script >
 	<script src = "doprr/DoprrFloor.js" ></script >
 	<script src = "doprr/DoprrThree.js" ></script >
+	<script src = "doprr/Doprr3D.js" ></script >
 </body >
 </html >
