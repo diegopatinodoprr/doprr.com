@@ -1,26 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { HelloComponent } from './hello/hello.component';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatCardModule } from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
+import {MatButtonToggleModule } from '@angular/material/button-toggle';
+import { environment } from '../environments/environment';
+import { WeddingComponent } from './wedding/wedding.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HelloComponent
+    WeddingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, FormsModule, MatButtonModule, OverlayModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    BrowserAnimationsModule, MatCardModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+
+    MatCardModule, MatButtonToggleModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
