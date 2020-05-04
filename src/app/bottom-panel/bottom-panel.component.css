@@ -1,0 +1,37 @@
+.bottomContent {
+    display: block;
+    height: 32px;
+    background-color: rgb(233, 241, 183);
+}
+
+.openBottomPanel {
+    display: block;
+    position: absolute;
+    height: 20px;
+    width: 60px;
+    top: -20px;
+    left: 50%;
+    background-color: rgb(233, 241, 183);
+    ;
+}
+
+.openBottomPanel p {
+    position: absolute;
+    top: -16px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.bottomTwitter {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.bottomWatApps {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+}
