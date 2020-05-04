@@ -18,7 +18,7 @@ export class WeddingService {
     return this.activities;
   }
   public activitieChange(activitie: string) {
-    this.json = _.chain(data.default).filter((value) => value.sd.match(activitie))
+    this.json = _.chain(data["default"]).filter((value) => value.sd.match(activitie))
       .map((value) => new WeddingPicture(value.sd, value.th)).value();
     this.activitieData.next(this.json);
   }

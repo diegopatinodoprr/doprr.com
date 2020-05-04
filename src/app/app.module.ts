@@ -6,22 +6,22 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatCardModule } from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
-
-import {MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { environment } from '../environments/environment';
 import { WeddingComponent } from './wedding/wedding.component';
+import { BottomPanelComponent } from './bottom-panel/bottom-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeddingComponent
+    WeddingComponent,
+    BottomPanelComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     MatCardModule, MatButtonToggleModule, MatGridListModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

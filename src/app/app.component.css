@@ -1,3 +1,14 @@
-.content {
-    background-image: url("../assets/images/wedding_background.jpg");
-}
+    .content {
+        color: white;
+        background-color: brown;
+    }
+    
+    app-bottom-panel {
+        display: block;
+        position: absolute;
+        bottom: 0px;
+        left: 2px;
+        right: 2px;
+        border: solid 1px #ffffff5c;
+        background-color: rgba(27, 29, 31, 0.281);
+    }
