@@ -1,4 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { AnimatedButtonComponent } from '../animated-button/animated-button.component';
 import {
   trigger,
   state,
@@ -19,7 +20,7 @@ import {
         height: 0
       })),
       state('open', style({
-        height: '32px'
+        height: '2em'
       })),
       transition('open => close', [
         animate('1s ease-in-out')
@@ -54,7 +55,7 @@ import {
 
 })
 export class BottomPanelComponent implements OnInit {
-  isHide = true;
+  isHide = false;
   isOpen = false;
   constructor() { }
 
