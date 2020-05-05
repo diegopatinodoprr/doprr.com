@@ -12,3 +12,12 @@
         border: solid 1px #ffffff5c;
         background-color: rgba(27, 29, 31, 0.281);
     }
+    
+    app-doprr-header {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 2px;
+        right: 2px;
+        background-color: rgba(27, 29, 31, 0.281);
+    }

@@ -12,13 +12,15 @@ import { environment } from '../environments/environment';
 import { WeddingComponent } from './wedding/wedding.component';
 import { BottomPanelComponent } from './bottom-panel/bottom-panel.component';
 import { AnimatedButtonComponent } from './animated-button/animated-button.component';
+import { DoprrHeaderComponent } from './doprr-header/doprr-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeddingComponent,
     BottomPanelComponent,
-    AnimatedButtonComponent
+    AnimatedButtonComponent,
+    DoprrHeaderComponent
   ],
   imports: [
     BrowserModule,
