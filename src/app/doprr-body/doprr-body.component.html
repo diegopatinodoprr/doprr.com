@@ -1,0 +1,8 @@
+<div class="doprrBody">
+    <div @appearsToUpLeftSide id="{{container}}" class="contentInside " *ngFor="let container of containers" (@appearsToUpLeftSide.done)="animations1Done($event)">
+        <p>{{enabled}}</p>
+    </div>
+    <div id="doprrBodyContent" class="contentInside">
+    </div>
+
+</div>

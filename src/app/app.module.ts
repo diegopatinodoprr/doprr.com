@@ -13,6 +13,7 @@ import { WeddingComponent } from './wedding/wedding.component';
 import { BottomPanelComponent } from './bottom-panel/bottom-panel.component';
 import { AnimatedButtonComponent } from './animated-button/animated-button.component';
 import { DoprrHeaderComponent } from './doprr-header/doprr-header.component';
+import { DoprrBodyComponent } from './doprr-body/doprr-body.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DoprrHeaderComponent } from './doprr-header/doprr-header.component';
     WeddingComponent,
     BottomPanelComponent,
     AnimatedButtonComponent,
-    DoprrHeaderComponent
+    DoprrHeaderComponent,
+    DoprrBodyComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@
     display: block;
     text-align: center;
     background-color: rgb(247, 247, 247);
+    border-radius: 10px 10px 0px 0px;
 }
 
 .openBottomPanel {
