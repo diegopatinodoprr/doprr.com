@@ -9,14 +9,32 @@
 
 .contentInside {
     border: 1px solid rgba(255, 255, 255, 0.151);
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    flex-wrap: wrap;
     background: rgba(255, 255, 255, 0.11);
     position: absolute;
 }
 
+.doprrOverButton {
+    width: calc(50% - 10px);
+    height: calc(50% - 10px);
+    background-color: #eeeeee0a;
+    margin: 5px;
+    pointer-events: all;
+}
+
+.doprrOverButton :hover {
+    width: calc(50% - 5px);
+    height: calc(50% - 5px);
+    background-color: #eeeeee88;
+    margin: 2px;
+}
+
 #doprrBodyContent {
     width: calc(100% - 150px);
-    height: 100vh;
+    height: calc(100vh - 150px);
     top: 109px;
     left: 128px;
 }

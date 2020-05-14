@@ -14,6 +14,7 @@ import { BottomPanelComponent } from './bottom-panel/bottom-panel.component';
 import { AnimatedButtonComponent } from './animated-button/animated-button.component';
 import { DoprrHeaderComponent } from './doprr-header/doprr-header.component';
 import { DoprrBodyComponent } from './doprr-body/doprr-body.component';
+import { DoprrOverContainerComponent } from './doprr-over-container/doprr-over-container.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DoprrBodyComponent } from './doprr-body/doprr-body.component';
     BottomPanelComponent,
     AnimatedButtonComponent,
     DoprrHeaderComponent,
-    DoprrBodyComponent
+    DoprrBodyComponent,
+    DoprrOverContainerComponent
   ],
   imports: [
     BrowserModule,

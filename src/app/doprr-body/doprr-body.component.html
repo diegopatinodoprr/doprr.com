@@ -1,8 +1,23 @@
 <div class="doprrBody">
-    <div @appearsToUpLeftSide id="{{container}}" class="contentInside " *ngFor="let container of containers" (@appearsToUpLeftSide.done)="animations1Done($event)">
-        <p>{{enabled}}</p>
+    <div @appearsToUpLeftSide id="{{container}}" class="contentInside " *ngFor="let container of containers">
     </div>
-    <div id="doprrBodyContent" class="contentInside">
+    <div @bodyContens id="doprrBodyContent" class="contentInside">
+        <app-doprr-over-container>
+            la moitie d'une image
+            <ng-container overlay>Experience</ng-container>
+        </app-doprr-over-container>
+        <app-doprr-over-container>
+            la moitie d'une image
+            <ng-container overlay>Techologies</ng-container>
+        </app-doprr-over-container>
+        <app-doprr-over-container>
+            la moitie d'une image
+            <ng-container overlay>Etudes</ng-container>
+        </app-doprr-over-container>
+        <app-doprr-over-container>
+            la moitie d'une image
+            <ng-container overlay>Hobbies</ng-container>
+        </app-doprr-over-container>
     </div>
 
 </div>
