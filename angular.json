@@ -29,7 +29,10 @@
                             "src/styles.css",
                             "src/assets/fonts/fontSocial.css"
                         ],
-                        "scripts": []
+                        "scripts": [],
+                        "allowedCommonJsDependencies": [
+                            "lodash"
+                        ]
                     },
                     "configurations": {
                         "production": {

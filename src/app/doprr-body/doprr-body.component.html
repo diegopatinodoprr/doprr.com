@@ -1,25 +1,25 @@
 <div class="doprrBody">
-    <div @appearsToUpLeftSide id="{{container}}" class="contentInside " *ngFor="let container of containers">
-    </div>
+
     <div @bodyContens id="doprrBodyContent" class="contentInside">
         <app-doprr-over-container class="experience">
-
             <ng-container overlay>
                 <div class="experienceOverlay">Experience</div>
             </ng-container>
         </app-doprr-over-container>
-        <app-doprr-over-container>
-            Techologies
-            <ng-container overlay>Techologies</ng-container>
+        <app-doprr-over-container class="tech">
+            <ng-container overlay>
+                <div class="techOverlay">Techologies</div>
+            </ng-container>
         </app-doprr-over-container>
         <app-doprr-over-container class="etude">
             <ng-container overlay>
-                <div class="etudeOverlay">Etudes</div>
+                <div class="etudeOverlay .noselect">Etudes</div>
             </ng-container>
         </app-doprr-over-container>
-        <app-doprr-over-container>
-            Hobbies
-            <ng-container overlay>Hobbies</ng-container>
+        <app-doprr-over-container class="hobbies">
+            <ng-container overlay>
+                <div class="hobbiesOverlay">Hobbies</div>
+            </ng-container>
         </app-doprr-over-container>
     </div>
 
