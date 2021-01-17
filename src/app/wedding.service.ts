@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import * as data from '../assets/weddingData/weddingData.json';
+import * as data from './data/weddingData/mariagedata.json';
 import { from, Observable, pipe, Subject } from 'rxjs';
 import { map, filter, scan } from 'rxjs/operators';
 @Injectable({
