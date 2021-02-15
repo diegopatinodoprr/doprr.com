@@ -30,7 +30,7 @@ jobs:
           npm i
           npm run build
       - name: Generate New Version 
-         run: |
+        run: |
           npm --no-git-tag-version patch
           echo "::set-env name=MODULE_VERSION:: npm --no-git-tag-version patch"
       - id: set_var
