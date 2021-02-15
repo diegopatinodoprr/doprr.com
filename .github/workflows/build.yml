@@ -31,9 +31,9 @@ jobs:
         run: |
           npm i
           npm run build
-      - name: Generate New Version 
+      - name: Generate new ${{ env.VERSION_TYPE}} version 
         run: |
-          npm --no-git-tag-version ${{ env.VERSION_TYPE}}
+          npm --no-git-tag-version version ${{ env.VERSION_TYPE}}
       - id: set_var
         run: |
           content=`cat package.json`
