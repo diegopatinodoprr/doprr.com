@@ -2,12 +2,10 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Log level'     
+        description: 'Version : major, minor, patch'     
         required: true
         options: ['major', 'minor', 'patch']
         default: 'minor'
-      tags:
-        description: 'Test scenario tags'  
 name: Build 
 jobs:
   build:
@@ -19,8 +17,9 @@ jobs:
     steps:
       - run: |
         echo "Version type: ${{ github.event.inputs.version }}"
-      - uses: actions/checkout@v1
-        ref: develop
+      - uses: actions/checkout@v2
+        with:
+          ref: develop
       - name: Setup nodejs ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
         with:
