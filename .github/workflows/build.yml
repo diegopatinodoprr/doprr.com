@@ -16,7 +16,7 @@ jobs:
       MODULE_VERSION:
     steps:
       - run: |
-        echo "Version type: ${{ github.event.inputs.version }}"
+        echo "${{ github.event.inputs.version }}"
       - uses: actions/checkout@v2
         with:
           ref: develop
