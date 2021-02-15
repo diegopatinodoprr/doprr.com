@@ -1,4 +1,7 @@
-on: rebase
+on: 
+  pull_request:
+    branches:
+      - master
 name: Build DOPRR
 jobs:
   build:
