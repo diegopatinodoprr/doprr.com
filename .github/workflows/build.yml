@@ -1,7 +1,13 @@
 on: 
-push:
-    branches:
-      - master
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Log level'     
+        required: true
+        options: ['major', 'minor', 'patch']
+        default: 'minor'
+      tags:
+        description: 'Test scenario tags'  
 name: Build 
 jobs:
   build:
@@ -11,24 +17,33 @@ jobs:
       NODE_VERSION: 'v14.15.4'
       MODULE_VERSION:
     steps:
+      - run: |
+        echo "Version type: ${{ github.event.inputs.version }}"
       - uses: actions/checkout@v1
-
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Node ${{ env.NODE_VERSION }}
+        ref: develop
+      - name: Setup nodejs ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: npm install and npm run build
+      - name: npm install and npm build
         run: |
           npm i
           npm run build
-      - name: Generate Version
-      #   run: |
+      - name: Generate New Version 
+         run: |
+          pm --no-git-tag-version patch
+          echo "::set-env name=MODULE_VERSION:: npm --no-git-tag-version patch"
+      - id: set_var
+        run: |
+          content=`cat package.json`
+          # the following lines are only required for multi line json
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+          # end of optional handling for multi line json
+          echo "::set-output name=packageJson::$content"
+      - run: |
+          echo "${{fromJson(steps.set_var.outputs.packageJson).version}}"
+         
 
 #

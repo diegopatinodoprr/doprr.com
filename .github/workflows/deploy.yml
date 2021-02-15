@@ -1,4 +1,4 @@
-on: push
+on: rebase
 name: Build DOPRR
 jobs:
   build:
@@ -26,7 +26,4 @@ jobs:
         run: |
           npm i
           npm run build
-      # - name: Generate Version
-      #   run: |
 
-#
