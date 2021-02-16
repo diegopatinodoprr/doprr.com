@@ -16,7 +16,7 @@ jobs:
       GITHUB_TOKEN: s{{secrets.DOPRR_TOKEN}}
       NODE_VERSION: 'v14.15.4'
       VERSION_TYPE:
-      MODULE_VERSION:
+      VERSION_TAG:
     steps:
       - run: |
           echo "${{ github.event.inputs.version }}"
@@ -47,20 +47,20 @@ jobs:
           echo "::set-output name=packageJson::$content"
       - name: update runner env
         run: |
-          echo "::set-env name=MODULE_VERSION::dev_${{fromJson(steps.set_var.outputs.packageJson).version}}"
+          echo "::set-env name=VERSION_TAG::dev_${{fromJson(steps.set_var.outputs.packageJson).version}}"
       - name: Commit files
         run: |
           git config  user.email "diegopatino@doprr.com"
           git config  user.name "Diego Patino"
           git add .
-          git commit -m "Generate Dev Version ${{ env.MODULE_VERSION }}"
+          git commit -m "Generate Dev Version ${{ env.VERSION_TAG }}"
           git push
       
-      - name: Tag snapshot
+      - name: Tag Dev Version ${{ env.VERSION_TAG }}
         uses: tvdias/github-tagger@v0.0.1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "${{ env.MODULE_VERSION }}"
+          tag: "${{ env.VERSION_TAG }}"
 
          
 

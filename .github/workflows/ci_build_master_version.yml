@@ -25,13 +25,13 @@ jobs:
           echo "Path is ... $PATH"
           PATH=$PATH:$(which git)
           echo "Path is ... $PATH"
-          
 
-      - uses: actions/checkout@v2
+      - name: Checout repository
+        uses: actions/checkout@v2
         with:
           ref: master
             
-      - name: update env with last tag 
+      - name: Update env with last tag 
         run: |
           git fetch --prune --unshallow
           echo "VERSION_TAG=$(git describe --tags `git rev-list --tags --max-count=1`  |sed 's/dev_//g')" >> $GITHUB_ENV
@@ -48,7 +48,7 @@ jobs:
           git add .
           git commit -am"Generate new version ${{env.VERSION_TAG}}"
           git push      
-      - name: Tag snapshot
+      - name: Tag Master Version ${{ env.VERSION_TAG }}
         uses: tvdias/github-tagger@v0.0.1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
