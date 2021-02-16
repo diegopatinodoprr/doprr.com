@@ -25,6 +25,9 @@ jobs:
           echo "Path is ... $PATH"
           PATH=$PATH:$(which git)
           echo "Path is ... $PATH"
+          git config  user.email "diegopatino@doprr.com"
+          git config  user.name "Diego Patino"
+
       - uses: actions/checkout@v2
         with:
           ref: master
