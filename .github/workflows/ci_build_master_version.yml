@@ -33,7 +33,8 @@ jobs:
             
       - name: update env with last tag 
         run: |
-          echo "::set-env name=VERSION_TAG::git describe --tags --abbrev=0  |sed 's/dev_//g'"
+          echo "currenttag=$(git describe --tags `git rev-list --tags --max-count=1`  |sed 's/dev_//g')"
+          echo "::set-env name=VERSION_TAG::$currenttag"
       
       - name: Update dist folder
         run: |
