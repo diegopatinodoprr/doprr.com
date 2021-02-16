@@ -42,8 +42,8 @@ jobs:
       
       - name: Update dist folder
         run: |
-          git checkout dev -- dist
-          git checkout dev -- package.json
+          git checkout develop -- dist
+          git checkout develop -- package.json
           git add .
           git commit -am"Generate new version ${{env.VERSION_TAG}}"
           git push 
