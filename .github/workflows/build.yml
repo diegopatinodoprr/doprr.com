@@ -13,6 +13,7 @@ jobs:
     
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      GITHUB_TOKEN: s{{secrets.DOPRR_TOKEN}}
       NODE_VERSION: 'v14.15.4'
       VERSION_TYPE:
       MODULE_VERSION:
@@ -29,12 +30,12 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: npm install and npm build
         run: |
-          npm i
+          npm tot
           npm run build
       - name: Generate new ${{ env.VERSION_TYPE}} version 
         run: |
           npm --no-git-tag-version version ${{ env.VERSION_TYPE}}
-      - id: set_var
+      - id: Read new Package Json
         run: |
           content=`cat package.json`
           # the following lines are only required for multi line json
@@ -43,8 +44,15 @@ jobs:
           content="${content//$'\r'/'%0D'}"
           # end of optional handling for multi line json
           echo "::set-output name=packageJson::$content"
-      - run: |
+      - name: update runner env
+        run: |
           echo "::set-env name=MODULE_VERSION::${{fromJson(steps.set_var.outputs.packageJson).version}}"
+      - name: Tag snapshot
+        uses: tvdias/github-tagger@v0.0.1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.MODULE_VERSION }}
+
          
 
 #
