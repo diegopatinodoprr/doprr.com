@@ -42,10 +42,11 @@ jobs:
       
       - name: Update dist folder
         run: |
-          git checkout dev --dist
-          git checkout dev package.json
+          git checkout dev -- dist
+          git checkout dev -- package.json
           git add .
           git commit -am"Generate new version ${{env.VERSION_TAG}}"
+          git push 
       # - name: update runner env
         # run: |
           # echo "::set-env name=MODULE_VERSION::${{fromJson(steps.set_var.outputs.packageJson).version}}"
