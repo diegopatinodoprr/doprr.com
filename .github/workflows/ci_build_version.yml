@@ -1,0 +1,61 @@
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'select tags'     
+        required: true
+        options: ['major', 'minor', 'patch']
+        default: '1'
+name: Generate Master Version 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      GITHUB_TOKEN: s{{secrets.DOPRR_TOKEN}}
+      NODE_VERSION: 'v14.15.4'
+      VERSION_TAG:
+      MODULE_VERSION:
+    steps:
+      - name: Install git 
+        run: |
+          apt-get install -y git
+          git --version
+          echo "Path is ... $PATH"
+          PATH=$PATH:$(which git)
+          echo "Path is ... $PATH"
+      - run: |
+          echo "${{ github.event.inputs.tag }}"
+          echo "::set-env name=VERSION_TYPE::${{ github.event.inputs.version }}"
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+      
+      - name: Find the last dev Tag 
+        uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
+      
+      - name: update env with last tag 
+        run: |
+          echo "::set-env name VERSION_TAG::${{ steps.get-latest-tag.outputs.tag }}"
+      
+      - name: Update dist folder
+        run: |
+          git checkout dev --dist
+          git checkout dev package.json
+          git add .
+          git commit -am"Generate new version ${{env.VERSION_TAG}}"
+      # - name: update runner env
+        # run: |
+          # echo "::set-env name=MODULE_VERSION::${{fromJson(steps.set_var.outputs.packageJson).version}}"
+     
+    #  - name: Tag snapshot
+    #    uses: tvdias/github-tagger@v0.0.1
+    #    with:
+    #      repo-token: ${{ secrets.GITHUB_TOKEN }}
+    #      tag: "dev_${{ env.MODULE_VERSION }}"
+
+         
+
+#
