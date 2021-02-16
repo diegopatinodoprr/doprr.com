@@ -3,9 +3,9 @@ on:
     inputs:
       tag:
         description: 'select tags'     
-        required: true
+        required: false
         options: ['major', 'minor', 'patch']
-        default: '1'
+        default: ' '
 name: Generate Master Version 
 jobs:
   build:
@@ -25,9 +25,6 @@ jobs:
           echo "Path is ... $PATH"
           PATH=$PATH:$(which git)
           echo "Path is ... $PATH"
-      - run: |
-          echo "${{ github.event.inputs.tag }}"
-          echo "::set-env name=VERSION_TYPE::${{ github.event.inputs.version }}"
       - uses: actions/checkout@v2
         with:
           ref: master
@@ -46,8 +43,8 @@ jobs:
       - name: Update dist folder
         run: |
           git fetch
-          git checkout develop -- dist
-          git checkout develop -- package.json
+          git checkout origin/develop -- dist
+          git checkout origin/develop -- package.json
           git add .
           git commit -am"Generate new version ${{env.VERSION_TAG}}"
           git push 
