@@ -1,7 +1,7 @@
 on: 
   workflow_dispatch:
     inputs:
-      version:
+      tag:
         description: 'select tags'     
         required: true
         options: ['major', 'minor', 'patch']
