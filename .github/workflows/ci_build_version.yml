@@ -25,8 +25,7 @@ jobs:
           echo "Path is ... $PATH"
           PATH=$PATH:$(which git)
           echo "Path is ... $PATH"
-          git config  user.email "diegopatino@doprr.com"
-          git config  user.name "Diego Patino"
+          
 
       - uses: actions/checkout@v2
         with:
@@ -45,6 +44,8 @@ jobs:
       
       - name: Update dist folder
         run: |
+          git config  user.email "diegopatino@doprr.com"
+          git config  user.name "Diego Patino"
           git fetch
           git checkout origin/develop -- dist
           git checkout origin/develop -- package.json
