@@ -47,19 +47,20 @@ jobs:
           echo "::set-output name=packageJson::$content"
       - name: update runner env
         run: |
-          echo "::set-env name=MODULE_VERSION::${{fromJson(steps.set_var.outputs.packageJson).version}}"
+          echo "::set-env name=MODULE_VERSION::dev_${{fromJson(steps.set_var.outputs.packageJson).version}}"
       - name: Commit files
         run: |
-          git config --local user.email "diegopatino@doprr.com"
-          git config --local user.name "${{env.GITHUB_ACTOR}}"
-          git commit -m "Add changes" -a
+          git config  user.email "diegopatino@doprr.com"
+          git config  user.name "Diego Patino"
+          git add .
+          git commit -m "Generate Dev Version ${{ env.MODULE_VERSION }}"
           git push
       
       - name: Tag snapshot
         uses: tvdias/github-tagger@v0.0.1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "dev_${{ env.MODULE_VERSION }}"
+          tag: "${{ env.MODULE_VERSION }}"
 
          
 
