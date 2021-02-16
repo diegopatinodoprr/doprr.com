@@ -34,7 +34,7 @@ jobs:
       - name: update env with last tag 
         run: |
          
-          echo VERSION_TAG=$(git describe --tags `git rev-list --tags --max-count=1`  |sed 's/dev_//g')" >> $GITHUB_ENV
+          echo "VERSION_TAG=$(git describe --tags `git rev-list --tags --max-count=1`  |sed 's/dev_//g')" >> $GITHUB_ENV
       
       - name: Update dist folder
         run: |
