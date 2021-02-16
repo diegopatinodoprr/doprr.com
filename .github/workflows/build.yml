@@ -6,7 +6,7 @@ on:
         required: true
         options: ['major', 'minor', 'patch']
         default: 'minor'
-name: Build 
+name: Generate Dev Version 
 jobs:
   build:
     runs-on: ubuntu-latest
