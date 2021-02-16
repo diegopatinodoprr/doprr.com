@@ -35,7 +35,8 @@ jobs:
       - name: Generate new ${{ env.VERSION_TYPE}} version 
         run: |
           npm --no-git-tag-version version ${{ env.VERSION_TYPE}}
-      - id: Read new Package Json
+      - name: Read new Package Json
+        id: set_var
         run: |
           content=`cat package.json`
           # the following lines are only required for multi line json
