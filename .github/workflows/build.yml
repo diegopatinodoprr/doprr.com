@@ -30,7 +30,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: npm install and npm build
         run: |
-          npm tot
+          npm ci
           npm run build
       - name: Generate new ${{ env.VERSION_TYPE}} version 
         run: |
