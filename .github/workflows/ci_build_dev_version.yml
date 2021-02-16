@@ -50,7 +50,7 @@ jobs:
           echo "::set-env name=MODULE_VERSION::${{fromJson(steps.set_var.outputs.packageJson).version}}"
       - name: Commit files
         run: |
-          git config --local user.email "${{env.GITHUB_RUN_ID}}+github-actions[bot]@users.noreply.github.com"
+          git config --local user.email "diegopatino@doprr.com"
           git config --local user.name "${{env.GITHUB_ACTOR}}"
           git commit -m "Add changes" -a
           git push
