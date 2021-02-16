@@ -38,7 +38,7 @@ jobs:
       
       - name: update env with last tag 
         run: |
-          echo "::set-env name VERSION_TAG::${{ steps.get-latest-tag.outputs.tag }}"
+          echo "::set-env name=VERSION_TAG::${{ steps.get-latest-tag.outputs.tag }}"
       
       - name: Update dist folder
         run: |
