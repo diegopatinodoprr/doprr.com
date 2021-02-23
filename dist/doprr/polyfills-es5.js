@@ -466,7 +466,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       __webpack_require__(
-      /*! /home/runner/work/doprr.com/doprr.com/node_modules/@angular-devkit/build-angular/src/webpack/es5-polyfills.js */
+      /*! /home/diego/work/devperso/doprr.com/node_modules/@angular-devkit/build-angular/src/webpack/es5-polyfills.js */
       "voQr");
 
       __webpack_require__(
@@ -474,7 +474,7 @@
       "R0gw");
 
       module.exports = __webpack_require__(
-      /*! /home/runner/work/doprr.com/doprr.com/src/polyfills.ts */
+      /*! /home/diego/work/devperso/doprr.com/src/polyfills.ts */
       "hN/g");
       /***/
     },
