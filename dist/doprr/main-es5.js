@@ -8,7 +8,11 @@
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
     /***/
     "+p9c":
-    
+    /*!*************************************************************************!*\
+      !*** ./src/app/bottom-panel/bottom-panel.component.css.shim.ngstyle.js ***!
+      \*************************************************************************/
+
+    /*! exports provided: styles */
 
     /***/
     function p9c(module, __webpack_exports__, __webpack_require__) {
@@ -285,7 +289,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
-      /*! /home/diego/work/devperso/doprr.com/src/main.ts */
+      /*! /home/runner/work/doprr.com/doprr.com/src/main.ts */
       "zUnb");
       /***/
     },

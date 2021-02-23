@@ -72,7 +72,7 @@ var BottomPanelComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/diego/work/devperso/doprr.com/src/main.ts */"zUnb");
+module.exports = __webpack_require__(/*! /home/runner/work/doprr.com/doprr.com/src/main.ts */"zUnb");
 
 
 /***/ }),
