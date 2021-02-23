@@ -55,5 +55,5 @@ jobs:
           git config  user.name "Diego Patino"
           git add .
           git commit -m "Generate Dev Version ${{ env.VERSION_TAG }}"
-          git tag -f ${{ env.VERSION_TAG }}
-          git push -f --tags
+          git tag -a ${{env.VERSION_TAG}} -m ${{env.VERSION_TAG}}
+          git push -f --follow--tags
