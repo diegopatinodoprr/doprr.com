@@ -1,12 +1,11 @@
 on: 
-push:
+  push:
     branches:
       - master
-name: Build 
+name: Build
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     env:
       NODE_VERSION: 'v14.15.4'
       MODULE_VERSION:
@@ -28,7 +27,3 @@ jobs:
         run: |
           npm i
           npm run build
-      - name: Generate Version
-      #   run: |
-
-#
