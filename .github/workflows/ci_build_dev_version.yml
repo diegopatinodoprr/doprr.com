@@ -35,7 +35,7 @@ jobs:
           npm run build
       - name: Generate new ${{ env.VERSION_TYPE}} version
         run: |
-          npm version ${{ env.VERSION_TYPE}}
+          npm version --no-git-tag-version ${{ env.VERSION_TYPE}}
       - name: Read new Package Json
         id: set_var
         run: |
@@ -56,4 +56,4 @@ jobs:
           git add .
           git commit -m "Generate Dev Version ${{ env.VERSION_TAG }}"
           git tag -a ${{env.VERSION_TAG}} -m ${{env.VERSION_TAG}}
-          git push -f --follow--tags
+          git push -f --follow-tags
