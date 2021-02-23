@@ -17,8 +17,8 @@ jobs:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       GITHUB_TOKEN: s{{secrets.DOPRR_TOKEN}}
       NODE_VERSION: 'v14.15.4'
-      VERSION_TYPE:
-      VERSION_TAG:
+      VERSION_TYPE: ""
+      VERSION_TAG: ""
     steps:
       - run: |
           echo "${{ github.event.inputs.version }}"
@@ -34,9 +34,9 @@ jobs:
         run: |
           npm ci
           npm run build
-      - name: Generate new ${{ env.VERSION_TYPE}} version 
+      - name: Generate new ${{ env.VERSION_TYPE}} version
         run: |
-          npm --no-git-tag-version version ${{ env.VERSION_TYPE}}
+          npm version ${{ env.VERSION_TYPE}}
       - name: Read new Package Json
         id: set_var
         run: |
@@ -56,14 +56,5 @@ jobs:
           git config  user.name "Diego Patino"
           git add .
           git commit -m "Generate Dev Version ${{ env.VERSION_TAG }}"
-          git push
-      
-      - name: Tag Dev Version ${{ env.VERSION_TAG }}
-        uses: tvdias/github-tagger@v0.0.1
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "${{ env.VERSION_TAG }}"
-
-         
-
-#
+          git tag -f ${{ env.VERSION_TAG }}
+          git push -f --tags
