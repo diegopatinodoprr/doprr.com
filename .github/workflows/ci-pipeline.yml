@@ -58,3 +58,9 @@ jobs:
       - name: Run mpn build
         run: |
           npm run build
+      - name: Create new Minor Version if Branch is develop
+        if: |
+          ((github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/develop')
+        run: |
+          npm version --no-git-tag-version
+
