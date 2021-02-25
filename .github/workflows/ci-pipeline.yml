@@ -1,0 +1,60 @@
+name: Standard Pipeline
+
+on:
+  push:
+    branches:
+      - 'develop'
+      - 'release/*'
+  pull_request:
+    types: [opened, ready_for_review, reopened, synchronize]
+
+env:
+  NODE_VERSION: 14.x
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display runner information
+        run: |
+          echo "GITHUB_ACTION = ${GITHUB_ACTION}"
+          echo "GITHUB_ACTIONS = ${GITHUB_ACTIONS}"
+          echo "GITHUB_ACTOR = ${GITHUB_ACTOR}"
+          echo "GITHUB_EVENT_NAME = ${GITHUB_EVENT_NAME}"
+          echo "GITHUB_EVENT_PATH = ${GITHUB_EVENT_PATH}"
+          echo "GITHUB_REF = ${GITHUB_REF}"
+          echo "GITHUB_REPOSITORY = ${GITHUB_REPOSITORY}"
+          echo "GITHUB_RUN_ID = ${GITHUB_RUN_ID}"
+          echo "GITHUB_RUN_NUMBER = ${GITHUB_RUN_NUMBER}"
+          echo "GITHUB_SHA = ${GITHUB_SHA}"
+          echo "GITHUB_WORKFLOW = ${GITHUB_WORKFLOW}"
+          echo "GITHUB_WORKSPACE = ${GITHUB_WORKSPACE}"
+          echo "HOME = ${HOME}"
+          echo "HOSTNAME = ${HOSTNAME}"
+          echo "USER = ${USER}"
+          echo "ID = $(id)"
+          git --version
+          git lfs version
+          echo "Amount of free and used memory:"
+          free -h
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Compute a sha1 of the git lfs files
+        run: echo "git_lfs_files_sha1=$(git lfs ls-files -l | cut -d' ' -f1 | sort | sha1sum | awk '{print $1}')" >> $GITHUB_ENV
+      - name: Cache the git lfs files
+        uses: actions/cache@v2
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-git-lfs-${{ env.git_lfs_files_sha1 }}
+      - name: Download (if needed) and checkout the git lfs files
+        run: git lfs pull
+      - name: Set up Node environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Run NPM Ci
+        run : |
+          npm ci
+      - name: Run mpn build
+        run: |
+          npm run build
