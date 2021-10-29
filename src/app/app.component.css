@@ -1,0 +1,22 @@
+    .content {
+        color: white;
+        background-color: brown;
+    }
+    
+    app-bottom-panel {
+        display: block;
+        position: absolute;
+        bottom: 0px;
+        left: 2px;
+        right: 2px;
+    }
+    
+    app-doprr-header {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 2px;
+        right: 2px;
+        background-color: rgba(27, 29, 31, 0.281);
+        z-index: 2;
+    }
