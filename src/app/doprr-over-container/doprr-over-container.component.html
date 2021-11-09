@@ -1,5 +1,10 @@
 <ng-content></ng-content>
-<div class="overlay" *ngIf="state" [@hover]="state" (@hover.done)="onDone($event)">
-    <ng-content select="[overlay]"></ng-content>
+<div
+  class="overlay"
+  *ngIf="state"
+  [@hover]="state"
+  (@hover.done)="onDone($event)"
+>
+  <ng-content select="[overlay]"></ng-content>
 </div>
 <!--UN comentaire ICI-->

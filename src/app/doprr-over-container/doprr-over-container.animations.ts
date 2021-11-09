@@ -1,9 +1,9 @@
 import {
-    trigger,
-    state,
-    style,
-    animate,
-    transition
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
 } from '@angular/animations';
 
 const animateIn = '0.15s ease-in';
@@ -16,31 +16,15 @@ const styleBottom = { transform: 'translate3d(0, 100%, 0)' };
 const styleLeft = { transform: 'translate3d(-100%, 0, 0)' };
 
 export const DoprrOverContainerAnimations = [
-    trigger('hover', [
-        state('*', style(styleIdle)),
-        transition('* => in-left', [
-            style(styleLeft), animate(animateIn)
-        ]),
-        transition('* => in-right', [
-            style(styleRight), animate(animateIn)
-        ]),
-        transition('* => in-top', [
-            style(styleTop), animate(animateIn)
-        ]),
-        transition('* => in-bottom', [
-            style(styleBottom), animate(animateIn)
-        ]),
-        transition('* => out-right', [
-            animate(animateOut, style(styleRight))
-        ]),
-        transition('* => out-left', [
-            animate(animateOut, style(styleLeft))
-        ]),
-        transition('* => out-top', [
-            animate(animateOut, style(styleTop))
-        ]),
-        transition('* => out-bottom', [
-            animate(animateOut, style(styleBottom))
-        ]),
-    ])
+  trigger('hover', [
+    state('*', style(styleIdle)),
+    transition('* => in-left', [style(styleLeft), animate(animateIn)]),
+    transition('* => in-right', [style(styleRight), animate(animateIn)]),
+    transition('* => in-top', [style(styleTop), animate(animateIn)]),
+    transition('* => in-bottom', [style(styleBottom), animate(animateIn)]),
+    transition('* => out-right', [animate(animateOut, style(styleRight))]),
+    transition('* => out-left', [animate(animateOut, style(styleLeft))]),
+    transition('* => out-top', [animate(animateOut, style(styleTop))]),
+    transition('* => out-bottom', [animate(animateOut, style(styleBottom))]),
+  ]),
 ];

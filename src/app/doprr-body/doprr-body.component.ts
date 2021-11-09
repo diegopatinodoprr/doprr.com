@@ -1,13 +1,10 @@
 import { Component, HostBinding } from '@angular/core';
 import {
   animate,
-  keyframes,
   query,
-  stagger,
-  state,
   style,
   transition,
-  trigger
+  trigger,
 } from '@angular/animations';
 
 @Component({

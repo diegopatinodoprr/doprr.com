@@ -8,9 +8,8 @@ describe('BottomPanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BottomPanelComponent ]
-    })
-    .compileComponents();
+      declarations: [BottomPanelComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

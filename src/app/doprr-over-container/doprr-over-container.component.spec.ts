@@ -8,9 +8,8 @@ describe('DoprrOverContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DoprrOverContainerComponent ]
-    })
-    .compileComponents();
+      declarations: [DoprrOverContainerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

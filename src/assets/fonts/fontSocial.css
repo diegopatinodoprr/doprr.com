@@ -1,6 +1,7 @@
 @font-face {
-    font-family: 'social_circlesregular';
-    font-weight: normal;
-    font-style: normal;
-    src: url('social_circles_v1.1-webfont.woff2') format('woff2'), url('social_circles_v1.1-webfont.woff') format('woff');
+  font-family: "social_circlesregular";
+  font-weight: normal;
+  font-style: normal;
+  src: url("social_circles_v1.1-webfont.woff2") format("woff2"),
+    url("social_circles_v1.1-webfont.woff") format("woff");
 }

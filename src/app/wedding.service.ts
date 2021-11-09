@@ -1,10 +1,8 @@
 import * as _ from 'lodash';
 import * as data from './data/weddingData/mariagedata.json';
 
-import { Observable, Subject, from, pipe } from 'rxjs';
-import { filter, map, scan } from 'rxjs/operators';
-
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -29,9 +27,9 @@ export class WeddingService {
   getActivities(): Array<string> {
     return this.activities;
   }
-  public activitieChange(activitie: string) {
+  public activitieChange(activitie: string): void {
     this.json = _.chain(data['default'])
-      .filter((value: { sd: string }) => value.sd.match(activitie))
+      .filter((value: { sd: string }) => RegExp(activitie).exec(value.sd))
       .map(
         (value: { sd: string; th: string }) =>
           new WeddingPicture(value.sd, value.th)
@@ -48,7 +46,7 @@ export class WeddingPicture {
     this.th = th;
     this.sd = sd;
   }
-  static fromJson(json: any) {
+  static fromJson(json: { sd: string; th: string }): WeddingPicture {
     return new WeddingPicture(json.sd, json.th);
   }
 }

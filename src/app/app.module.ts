@@ -1,5 +1,3 @@
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
 import { AnimatedButtonComponent } from './animated-button/animated-button.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';

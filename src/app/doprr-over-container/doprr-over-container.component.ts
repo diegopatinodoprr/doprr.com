@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 import { AnimationEvent } from '@angular/animations';
 import { DoprrOverContainerAnimations } from './doprr-over-container.animations';
@@ -10,11 +10,11 @@ import { DoprrOverContainerAnimations } from './doprr-over-container.animations'
   animations: DoprrOverContainerAnimations,
 })
 export class DoprrOverContainerComponent {
-  state: string = '';
+  state = '';
 
   @HostListener('mouseenter', ['$event'])
   @HostListener('mouseleave', ['$event'])
-  onHover(event: MouseEvent) {
+  onHover(event: MouseEvent): void {
     const direction = event.type === 'mouseenter' ? 'in' : 'out';
     const host = event.target as HTMLElement;
     const w = host.offsetWidth;
@@ -28,7 +28,7 @@ export class DoprrOverContainerComponent {
     this.state = `${direction}-${states[side]}`;
   }
 
-  onDone(event: AnimationEvent) {
+  onDone(event: AnimationEvent): void {
     this.state = event.toState.startsWith('out-') ? '' : this.state;
   }
 }

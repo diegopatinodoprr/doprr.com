@@ -1,14 +1,12 @@
-import { Component, HostBinding } from '@angular/core';
 import {
   animate,
-  keyframes,
   state,
   style,
   transition,
-  trigger
+  trigger,
 } from '@angular/animations';
 
-import { AnimatedButtonComponent } from '../animated-button/animated-button.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-bottom-panel',
@@ -61,10 +59,10 @@ export class BottomPanelComponent {
   isOpen = false;
   constructor() {}
 
-  toggle() {
+  toggle(): void {
     this.isHide = !this.isHide;
   }
-  openClose() {
+  openClose(): void {
     this.isOpen = !this.isOpen;
   }
 }
