@@ -8,11 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { DoprrBodyComponent } from './doprr-body/doprr-body.component';
 import { DoprrOverContainerComponent } from './doprr-over-container/doprr-over-container.component';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule } from '@angular/common/http';
+import { IntroductionComponent } from './introduction/introduction.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -25,6 +28,7 @@ import { environment } from '../environments/environment';
 
     DoprrBodyComponent,
     DoprrOverContainerComponent,
+    IntroductionComponent,
   ],
   imports: [
     HttpClientModule,
@@ -33,6 +37,10 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonToggleModule,
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot([]),
 
     MatGridListModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

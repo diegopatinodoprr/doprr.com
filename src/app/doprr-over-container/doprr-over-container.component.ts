@@ -1,9 +1,7 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 import { AnimationEvent } from '@angular/animations';
 import { DoprrOverContainerAnimations } from './doprr-over-container.animations';
-import { PexelsService } from '../services/pexels.service';
-import { Photo } from 'pexels';
 
 @Component({
   selector: 'app-doprr-over-container',
@@ -11,18 +9,9 @@ import { Photo } from 'pexels';
   styleUrls: ['./doprr-over-container.component.css'],
   animations: DoprrOverContainerAnimations,
 })
-export class DoprrOverContainerComponent implements OnInit {
-  constructor(private pexelService: PexelsService) {}
-  ngOnInit(): void {
-    this.pexelService.getdata('cosmos', 100).subscribe((data) => {
-      const toTake = Math.floor(100 * Math.random());
-      if (data.photos) {
-        const newBkg = data.photos[toTake] as Photo;
+export class DoprrOverContainerComponent {
+  constructor() {}
 
-        document.body.style.backgroundImage = `url(${newBkg.src.large})`;
-      }
-    });
-  }
   state = '';
 
   @HostListener('mouseenter', ['$event'])

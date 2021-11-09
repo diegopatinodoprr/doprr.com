@@ -1,4 +1,10 @@
-import { Component, HostBinding } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   animate,
   query,
@@ -6,6 +12,9 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+
+import { PexelsService } from '../services/pexels.service';
+import { Photo } from 'pexels';
 
 @Component({
   selector: 'app-doprr-body',
@@ -34,7 +43,7 @@ import {
     ]),
   ],
 })
-export class DoprrBodyComponent {
+export class DoprrBodyComponent implements OnInit {
   containers = [
     'contentInside1',
     'contentInside2',
@@ -44,5 +53,18 @@ export class DoprrBodyComponent {
   ];
   @HostBinding('@bodyContens')
   enabled = 0;
-  constructor() {}
+  constructor(private pexelService: PexelsService) {}
+  @Output() selected: EventEmitter<string> = new EventEmitter<string>();
+  ngOnInit(): void {
+    this.pexelService.getdata('moto', 100).subscribe((data) => {
+      const toTake = Math.floor(100 * Math.random());
+      if (data.photos) {
+        const newBkg = data.photos[toTake] as Photo;
+        if (newBkg?.src) {
+          document.body.style.backgroundImage = `url(${newBkg.src.large})`;
+          this.selected.emit('pictureReady');
+        }
+      }
+    });
+  }
 }
