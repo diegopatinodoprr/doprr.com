@@ -1,10 +1,7 @@
 .buttonIcon {
-  font-family: "social_circlesregular";
-  float: left;
-  font-size: 40px;
-  height: 1em;
-  width: 1em;
-  position: relative;
-  padding: 1px;
-  color: #5da2a9;
+    font-family: "social_circlesregular";
+    float: left;
+    font-size: 40px;
+    position: relative;
+    color: #5da2a9;
 }
