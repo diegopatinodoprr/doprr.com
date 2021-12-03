@@ -55,13 +55,14 @@ export class DoprrBodyComponent implements OnInit {
   enabled = 0;
   constructor(private pexelService: PexelsService) {}
   @Output() selected: EventEmitter<string> = new EventEmitter<string>();
-  ngOnInit(): void {
-    this.pexelService.getdata('moto', 100).subscribe((data) => {
+  ngOnInit(): void {}
+  public getPictureForBackground(theme: string): void {
+    this.pexelService.getdata(theme, 100).subscribe((data) => {
       const toTake = Math.floor(100 * Math.random());
       if (data.photos) {
         const newBkg = data.photos[toTake] as Photo;
         if (newBkg?.src) {
-          document.body.style.backgroundImage = `url(${newBkg.src.large})`;
+          document.body.style.backgroundImage = `url(${newBkg.src.landscape})`;
           this.selected.emit('pictureReady');
         }
       }

@@ -1,5 +1,5 @@
 <div class="content" role="main">
-    <app-doprr-body (selected)="hideintro()"></app-doprr-body>
+    <app-doprr-body #doprrBody (selected)="hideintro()"></app-doprr-body>
 </div>
 <app-bottom-panel></app-bottom-panel>
-<app-introduction #introduction></app-introduction>
+<app-introduction #introduction (selected)="setupTheme($event)"></app-introduction>

@@ -1,14 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import {
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError,
-  NavigationStart,
-  Router,
-  Event as RouterEvent,
-} from '@angular/router';
 
+import { DoprrBodyComponent } from './doprr-body/doprr-body.component';
 import { IntroductionComponent } from './introduction/introduction.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +12,9 @@ import { IntroductionComponent } from './introduction/introduction.component';
 export class AppComponent {
   public showOverlay = true;
 
+  @ViewChild('doprrBody', { static: true })
+  doprrBody: any;
+
   @ViewChild('introduction', { static: true })
   introChild: any;
   title = 'doprr';
@@ -26,5 +23,9 @@ export class AppComponent {
   // Shows and hides the loading spinner during RouterEvent changes
   public hideintro() {
     (this.introChild as IntroductionComponent).hide();
+  }
+
+  public setupTheme(theme: string) {
+    (this.doprrBody as DoprrBodyComponent).getPictureForBackground(theme);
   }
 }

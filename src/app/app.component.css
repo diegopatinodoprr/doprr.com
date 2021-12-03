@@ -1,22 +1,38 @@
 .content {
-  color: white;
-  background-color: brown;
+    color: white;
+    background-color: brown;
 }
 
 app-bottom-panel {
-  display: block;
-  position: absolute;
-  bottom: 0px;
-  left: 2px;
-  right: 2px;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 2px;
+    right: 2px;
 }
 
 app-doprr-header {
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 2px;
-  right: 2px;
-  background-color: rgba(27, 29, 31, 0.281);
-  z-index: 2;
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 2px;
+    right: 2px;
+    background-color: rgba(27, 29, 31, 0.281);
+    z-index: 2;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-introduction',
@@ -8,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class IntroductionComponent implements OnInit {
   constructor() {}
   visible = true;
+  theme = '';
+  @Output() selected: EventEmitter<string> = new EventEmitter<string>();
   ngOnInit(): void {}
   public hide() {
     this.visible = false;
-    console.log('hide intro');
+  }
+  public themeSelected() {
+    this.selected.emit('univers');
   }
 }
