@@ -67,7 +67,7 @@ jobs:
       - name: Genereta new Version of {{ matrix.name}}
         run: |
           cd $GITHUB_WORKSPACE/${{matrix.path}}
-          npm version --preid=alpha
+          npm version npm version patch
       - name: Npm install(npm ci)
         run: |
           cd $GITHUB_WORKSPACE/${{matrix.path}}
