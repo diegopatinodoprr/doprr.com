@@ -58,12 +58,16 @@ jobs:
           git lfs version
           echo "Amount of free and used memory:"
           free -h
-      - uses: actions/checkout@v2
+      - name: Checkout the repository
+        uses: actions/checkout@v2
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{env.NODE_VERSION }}
-
+      - name: Genereta new Version of {{ matrix.name}}
+        run: |
+          cd $GITHUB_WORKSPACE/${{matrix.path}}
+          npm version --preid=alpha
       - name: Npm install(npm ci)
         run: |
           cd $GITHUB_WORKSPACE/${{matrix.path}}
@@ -72,3 +76,10 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/${{matrix.path}}
           npm run build
+      - name: Push new Version to repository
+        uses: github-actions-x/commit@v2.8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: develop
+          commit-message: "${{ matrix.name }} adds new version"
+          rebase: "true" # pull and rebase before commit
