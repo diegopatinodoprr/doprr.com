@@ -9,7 +9,7 @@ on:
     inputs:
       version:
         description: "the Version : major, minor, patch, prerelease"
-        required: true
+        required: false
         options: ["major", "minor", "patch"]
         default: "patch"
 jobs:
@@ -19,7 +19,7 @@ jobs:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
       GITHUB_TOKEN: ${{ secrets.DOPRR_TOKEN }}
       NODE_VERSION: "v14.15.4"
-      VERSION_TYPE: ""
+      VERSION_TYPE: "patch"
       VERSION_TAG: ""
       commitmsg: ""
     steps:
@@ -47,9 +47,15 @@ jobs:
           echo "Amount of free and used memory:"
           free -h
       - name: Display version to generate
+        if: ${{ github.event.inputs.version }} != ''
         run: |
-          echo "version to generate ${{ github.event.inputs.version }}"
-          echo "::set-env name=VERSION_TYPE::${{ github.event.inputs.version }}"
+          if [ "${{ github.event.inputs.version }}" != "" ]; then
+            echo "version to generate ${{ github.event.inputs.version }}"
+            echo "::set-env name=VERSION_TYPE::${{ github.event.inputs.version }}"
+          else
+            echo "::set-env name=VERSION_TYPE::patch"
+          fi
+
       - name: Checkout the repository
         uses: actions/checkout@v2
       - name: Use Node.js ${{ env.NODE_VERSION }}
