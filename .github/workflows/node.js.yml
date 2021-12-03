@@ -55,7 +55,6 @@ jobs:
           else
             echo "::set-env name=VERSION_TYPE::patch"
           fi
-
       - name: Checkout the repository
         uses: actions/checkout@v2
       - name: Use Node.js ${{ env.NODE_VERSION }}
@@ -95,7 +94,6 @@ jobs:
         uses: martinbeentjes/npm-get-version-action@master
         with:
           path: front/
-
       - name: Print the new generate version
         run: |
           echo "VERSION_TAG=${{steps.extract_version.outputs.current-version }}" >> $GITHUB_ENV
@@ -107,7 +105,7 @@ jobs:
           git config --global user.name "${{env.GH_USERNAME}}"
           git add .
           git commit -m "Version ${{ env.VERSION_TYPE}} : ${{ env.VERSION_TAG }}"
-          git tag ${{ env.VERSION_TAG }}
+          git tag v${{ env.VERSION_TAG }}
           git push origin --tags
           git push
         env:
