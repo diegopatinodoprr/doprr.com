@@ -63,7 +63,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{env.NODE_VERSION }}
-          cache: "npm"
+
       - name: Npm install(npm ci)
         run: |
           cd $GITHUB_WORKSPACE/${{matrix.path}}
