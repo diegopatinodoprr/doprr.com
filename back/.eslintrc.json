@@ -1,0 +1,108 @@
+{
+  "ignorePatterns": [
+    "src/lib/scripts/*.*"
+  ],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "standard",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "semi": [
+      2,
+      "always"
+    ],
+    "@typescript-eslint/explicit-function-return-type": [
+      "error"
+    ],
+    "@typescript-eslint/no-floating-promises": [
+      "error"
+    ],
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-inferrable-types": 0,
+    "quotemark": [
+      "off"
+    ],
+    "camelcase": "off",
+    "object-literal-sort-keys": "off",
+    "space-before-function-paren": "off",
+    "no-bitwise": "off",
+    "no-console": "off",
+    "@typescript-eslint/explicit-module-boundary-types": [
+      "error",
+      {
+        "allowArgumentsExplicitlyTypedAsAny": true
+      }
+    ],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(warn|error|info|trace)$/]",
+        "message": "NOT USE 'console.log'"
+      }
+    ],
+    "prefer-arrow/prefer-arrow-functions": [
+      "off"
+    ],
+    "no-underscore-dangle": [
+      "off"
+    ],
+    "no-useless-constructor": [
+      "off"
+    ],
+    "arrow-body-style": [
+      "off"
+    ],
+    "@typescript-eslint/dot-notation": [
+      "off"
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "format": [
+          "camelCase",
+          "UPPER_CASE",
+          "snake_case"
+        ],
+        "leadingUnderscore": "allow",
+        "trailingUnderscore": "allow"
+      }
+    ],
+    "@typescript-eslint/explicit-member-accessibility": [
+      "off",
+      {
+        "accessibility": "explicit"
+      }
+    ],
+    "@typescript-eslint/quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "arrow-parens": [
+      "off",
+      "always"
+    ],
+    "import/order": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 200
+      }
+    ]
+  }
+}
