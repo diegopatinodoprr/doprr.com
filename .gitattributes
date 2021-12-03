@@ -1,0 +1,4 @@
+**/*.*/src      export-ignore
+.git*           export-ignore
+/front/node_modules export-ignore
+**/*.*/*.josn export-ignore
