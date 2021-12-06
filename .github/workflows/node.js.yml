@@ -22,6 +22,24 @@ jobs:
       VERSION_TYPE: "patch"
       VERSION_TAG: ""
       commitmsg: ""
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - name: back
+            path: back
+            localfolder: dist
+            workspace: /home/runner/work/doprr.com/doprr.com/back
+            installNpm: "true"
+            restartService: "true"
+          - name: front
+            path: front
+            workspace: /home/runner/work/doprr.com/doprr.com/front
+            localfolder: dist
+            installNpm: "false"
+            restartService: "false"
+
     steps:
       - name: Display runner information
         run: |
@@ -55,58 +73,36 @@ jobs:
           else
             echo "::set-env name=VERSION_TYPE::patch"
           fi
+
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{env.NODE_VERSION }}
-      ### PARTIE FRONT
-      - name: Genereta new Version of Front
+      - name: Generate new version
         run: |
-          cd $GITHUB_WORKSPACE/front
-          npm version ${{ env.VERSION_TYPE}}
-      - name: Npm install(npm ci)
+          cd $GITHUB_WORKSPACE/${{ matrix.path }}
+          npm version ${{env.VERSION_TYPE}}
+      - name: Install packages for ${{ matrix.name }}
         run: |
-          cd $GITHUB_WORKSPACE/front
+          cd $GITHUB_WORKSPACE/${{ matrix.path }}
           npm ci
-      - name: Npm Build(npm ci)
+      - name: Build Project on prodruction mode
         run: |
-          cd $GITHUB_WORKSPACE/front
-          npm run build
-      ### PARTIE BACK
-      - name: Genereta new Version of Front
-        run: |
-          cd $GITHUB_WORKSPACE/back
-          npm version ${{ env.VERSION_TYPE}}
-      - name: Npm install(npm ci)
-        run: |
-          cd $GITHUB_WORKSPACE/back
-          npm ci
-      - name: Npm Build(npm ci)
-        run: |
-          cd $GITHUB_WORKSPACE/back
-          npm run build
-
-      ### SECTION EXTRACT VERSION
+          cd $GITHUB_WORKSPACE/${{ matrix.path }}
+          npm run build --prod
+        ### SECTION EXTRACT VERSION
       - name: Get new Version
         id: extract_version
         uses: martinbeentjes/npm-get-version-action@master
         with:
-          path: front/
+          path: "${{matrix.workspace}}"
       - name: Print the new generate version
         run: |
           echo "VERSION_TAG=${{steps.extract_version.outputs.current-version }}" >> $GITHUB_ENV
           echo "VERSION_TO_DELETE_IF_FAILS=${{steps.extract_version.outputs.current-version }}" >> $GITHUB_ENV
       ### SECTION GITHUB COMMIT
-      - name: Commit and push new Version ${{ env.VERSION_TAG }}
-        run: |
-          git config --global user.email "${{env.GH_USERNAME}}@users.noreply.github.com"
-          git config --global user.name "${{env.GH_USERNAME}}"
-          git add .
-          git commit -m "Version ${{ env.VERSION_TYPE}} : ${{ env.VERSION_TAG }}"
-          git tag v${{ env.VERSION_TAG }}
-          git push origin --tags
-          git push
-        env:
-          GH_USERNAME: ${{ github.actor }}
+      - name: push
+        uses: github-actions-x/commit@v2.8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: master
+          commit-message: "${{ matrix.name }} add new version ${{ env.VERSION_TAG }}"
+          rebase: "true"
