@@ -1,4 +1,23 @@
-**/*.*/src      export-ignore
-.git*           export-ignore
-/front/node_modules export-ignore
-**/*.*/*.josn export-ignore
+
+.vscode export-ignore
+.git* export-ignore
+
+
+**/.eslinrc export-ignore
+**/tsconfig.* export-ignore
+**/tslint.* export-ignore
+**/.prettierignore  export-ignore
+**/src  export-ignore
+**/.prettierrc.json  export-ignore
+**/node_modules  export-ignore
+**/tsconfig.app.json  export-ignore
+**/.browserslistrc  export-ignore
+**/angular.json	 export-ignore
+**/tsconfig.json  export-ignore
+**/.editorconfig  export-ignore
+**/tsconfig.spec.json  export-ignore
+**/.eslintrc.json  export-ignore
+**/karma.conf.js  export-ignore
+
+
+
