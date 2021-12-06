@@ -108,3 +108,5 @@ jobs:
           rebase: "true"
           name: "${{env.GH_USERNAME}}@users.noreply.github.com"
           email: "${{env.GH_USERNAME}}"
+          force-push: "true"
+          force-add: "true"
