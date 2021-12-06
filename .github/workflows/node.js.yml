@@ -93,7 +93,7 @@ jobs:
         id: extract_version
         uses: martinbeentjes/npm-get-version-action@master
         with:
-          path: "${{matrix.workspace}}"
+          path: "${{env.GITHUB_WORKSPACE}}/${{ matrix.path }}"
       - name: Print the new generate version
         run: |
           echo "VERSION_TAG=${{steps.extract_version.outputs.current-version }}" >> $GITHUB_ENV
@@ -109,4 +109,4 @@ jobs:
           name: "${{env.GH_USERNAME}}@users.noreply.github.com"
           email: "${{env.GH_USERNAME}}"
           force-push: "true"
-          force-add: "true"
+         
