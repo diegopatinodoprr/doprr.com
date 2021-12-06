@@ -103,5 +103,8 @@ jobs:
         uses: github-actions-x/commit@v2.8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: develop
           commit-message: "${{ matrix.name }} add new version ${{ env.VERSION_TAG }}"
           rebase: "true"
+          name: "${{env.GH_USERNAME}}@users.noreply.github.com"
+          email: "${{env.GH_USERNAME}}"
