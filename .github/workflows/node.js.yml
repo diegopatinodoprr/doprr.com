@@ -95,7 +95,7 @@ jobs:
         id: extract_version
         uses: martinbeentjes/npm-get-version-action@master
         with:
-          path: .
+          path: "${{ matrix.name }}"
       - name: Print the new generate version
         run: |
           echo "VERSION_TAG=${{steps.extract_version.outputs.current-version }}" >> $GITHUB_ENV
