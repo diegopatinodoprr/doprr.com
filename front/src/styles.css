@@ -39,5 +39,57 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.experience {
+    background-image: url("./assets/images/experience.png");
+}
+
+.experienceOverlay {
+    width: 100%;
+    height: 100%;
+    background-image: url("./assets/images/experience-color.png");
+    background-blend-mode: difference;
+}
+
+.etude {
+    background-image: url("./assets/images/etude.png");
+}
+
+.etudeOverlay {
+    width: 100%;
+    height: 100%;
+    background-image: url("./assets/images/etude-color.png");
+    background-blend-mode: difference;
+}
+
+.tech {
+    background-image: url("./assets/images/tech.png");
+}
+
+.techOverlay {
+    width: 100%;
+    height: 100%;
+    background-image: url("./assets/images/tech-color.png");
+    background-blend-mode: difference;
+}
+
+.hobbies {
+    background-image: url("./assets/images/hobbies.png");
+}
+
+.hobbiesOverlay {
+    width: 100%;
+    height: 100%;
+    background-image: url("./assets/images/hobbies-color.png");
+    background-blend-mode: difference;
+}

@@ -1,0 +1,75 @@
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "the Version : major, minor, patch, prerelease"
+        required: false
+        options: ["major", "minor", "patch"]
+        default: "patch"
+name: Generate new Version of QBP SERVICE
+jobs:
+  build:
+    name: Build , update Version an publish to Prod server
+    runs-on: ubuntu-latest
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
+      GITHUB_TOKEN: ${{secrets.DOPRR_TOKEN}}
+      NODE_VERSION: "v14.15.4"
+      VERSION_TYPE: "patch"
+      VERSION_TAG: ""
+    steps:
+      - name: Display runner information
+        run: |
+          echo ${{github.actor}}
+          echo "CI = ${CI}"
+          echo "GITHUB_ACTION = ${GITHUB_ACTION}"
+          echo "GITHUB_ACTIONS = ${GITHUB_ACTIONS}"
+          echo "GITHUB_ACTOR = ${GITHUB_ACTOR}"
+          echo "GITHUB_EVENT_NAME = ${GITHUB_EVENT_NAME}"
+          echo "GITHUB_EVENT_PATH = ${GITHUB_EVENT_PATH}"
+          echo "GITHUB_REF = ${GITHUB_REF}"
+          echo "GITHUB_REPOSITORY = ${GITHUB_REPOSITORY}"
+          echo "GITHUB_RUN_ID = ${GITHUB_RUN_ID}"
+          echo "GITHUB_RUN_NUMBER = ${GITHUB_RUN_NUMBER}"
+          echo "GITHUB_SHA = ${GITHUB_SHA}"
+          echo "GITHUB_WORKFLOW = ${GITHUB_WORKFLOW}"
+          echo "GITHUB_WORKSPACE = ${GITHUB_WORKSPACE}"
+          echo "HOME = ${HOME}"
+          echo "HOSTNAME = ${HOSTNAME}"
+          echo "USER = ${USER}"
+          echo "ID = $(id)"
+          git --version
+          git lfs version
+          echo "Amount of free and used memory:"
+          free -h
+
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Setup nodejs ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Generate new Version
+        run: |
+          cd $GITHUB_WORKSPACE/front
+          npm --no-git-tag-version version ${{env.VERSION_TYPE}}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.DOPRR_TOKEN }}
+      - name: Npm CI installpackage from package-lock.json
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.DOPRR_TOKEN }}" > ~/.npmrc
+          npm ci
+      - name: Check code build
+        run: |
+          npm run build
+      - name: Create release from latest Tag
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "QBP SERVICE release ${{ env.VERSION_TAG }}"
+          files: |
+            dist/**/*.*
+            package-lock.json
+            package.json

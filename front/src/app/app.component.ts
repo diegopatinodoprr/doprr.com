@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { DoprrBodyComponent } from './doprr-body/doprr-body.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { Router } from '@angular/router';
 
@@ -26,6 +25,7 @@ export class AppComponent {
   }
 
   public setupTheme(theme: string) {
-    (this.doprrBody as DoprrBodyComponent).getPictureForBackground(theme);
+    this.router.navigate(['/']);
+    //(this.doprrBody as DoprrBodyComponent).getPictureForBackground(theme);
   }
 }

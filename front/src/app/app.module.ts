@@ -1,16 +1,13 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AnimatedButtonComponent } from './animated-button/animated-button.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BottomPanelComponent } from './bottom-panel/bottom-panel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { DoprrBodyComponent } from './doprr-body/doprr-body.component';
-import { DoprrOverContainerComponent } from './doprr-over-container/doprr-over-container.component';
+import { CarrierModule } from './module/carrier/carrier.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
-import { IntroductionComponent } from './introduction/introduction.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -23,21 +20,25 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { SharedModule } from './module/shared/shared.module';
 import { environment } from '../environments/environment';
 
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./module/doprrbody/doprrbody.module').then(
+        (module) => module.DoprrbodyModule
+      ),
+  },
+];
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    BottomPanelComponent,
-    AnimatedButtonComponent,
-    DoprrBodyComponent,
-    DoprrOverContainerComponent,
-    IntroductionComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     HttpClientModule,
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -46,9 +47,11 @@ import { environment } from '../environments/environment';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot(routes),
+    HttpClientModule,
     MatButtonModule,
     MatGridListModule,
+    CarrierModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
@@ -57,7 +60,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
@@ -71,6 +74,7 @@ import { environment } from '../environments/environment';
     MatButtonModule,
     FlexLayoutModule,
     HttpClientModule,
+    CarrierModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
