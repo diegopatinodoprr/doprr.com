@@ -46,7 +46,7 @@ jobs:
           free -h
       - name: Install action modules
         run: |
-          cd ${{GITHUB_WORKSPACE}}/download-release-action
+          cd $GITHUB_WORKSPACE/download-release-action
           npm i
       - name: Download release
         uses: ./download-release-action
