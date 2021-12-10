@@ -12,13 +12,15 @@ const { createTokenAuth } = require("@octokit/auth-token");
 
 
 const auth = createTokenAuth(repo_token);
-const authentication = await auth();
+
 
 async function run() {
+
     try {
         if (repository) {
             [owner, repo] = repository.split("/");
         }
+        var authentication = await auth();
         var releases = await octokit.repo.listReleases({
             owner: owner,
             repo: repo,
