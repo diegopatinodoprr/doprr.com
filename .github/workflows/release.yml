@@ -71,7 +71,7 @@ jobs:
           fileName: "doprr.zip"
       - uses: montudor/action-zip@v1
         with:
-          args: unzip -qq doprr.zip -d unzipedFiles
+          args: unzip -qq $GITHUB_WORKSPACE/doprr.zip -d $GITHUB_WORKSPACE/unzipedFiles
       - name: Display unzip results
         run: |
           echo ls -als
