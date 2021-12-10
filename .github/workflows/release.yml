@@ -42,30 +42,37 @@ jobs:
           git lfs version
           echo "Amount of free and used memory:"
           free -h
-
-      - name: Checkout the repository
-        uses: actions/checkout@v2
-      - name: Setup nodejs ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v1
+      - name: Download release
+        uses: diegopatinodoprr/doprr.com/download-release-action@v1.1
+        id: hello
         with:
-          node-version: ${{ env.NODE_VERSION }}
-      - name: Generate new Version
-        run: |
-          cd $GITHUB_WORKSPACE/front
-          npm --no-git-tag-version version ${{env.VERSION_TYPE}}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.DOPRR_TOKEN }}
-      - name: Npm CI installpackage from package-lock.json
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.DOPRR_TOKEN }}" > ~/.npmrc
-          npm ci
-      - name: Check code build
-        run: |
-          npm run build
-      - name: Create release from latest Tag
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: false
-          title: "QBP SERVICE release ${{ env.VERSION_TAG }}"
+          who-to-greet: "Mona the Octocat"
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+#      - name: Checkout the repository
+#        uses: actions/checkout@v2
+#      - name: Setup nodejs ${{ env.NODE_VERSION }}
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: ${{ env.NODE_VERSION }}
+#      - name: Generate new Version
+#        run: |
+#          cd $GITHUB_WORKSPACE/front
+#          npm --no-git-tag-version version ${{env.VERSION_TYPE}}
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.DOPRR_TOKEN }}
+#      - name: Npm CI installpackage from package-lock.json
+#        run: |
+#          echo "//npm.pkg.github.com/:_authToken=${{ secrets.DOPRR_TOKEN }}" > ~/.npmrc
+#          npm ci
+#      - name: Check code build
+#        run: |
+#          npm run build
+#      - name: Create release from latest Tag
+#        uses: "marvinpinto/action-automatic-releases@latest"
+#        with:
+#          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+#          automatic_release_tag: "latest"
+#          prerelease: false
+#          title: "QBP SERVICE release ${{ env.VERSION_TAG }}"
