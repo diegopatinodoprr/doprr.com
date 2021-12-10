@@ -69,7 +69,3 @@ jobs:
           automatic_release_tag: "latest"
           prerelease: false
           title: "QBP SERVICE release ${{ env.VERSION_TAG }}"
-          files: |
-            dist/**/*.*
-            package-lock.json
-            package.json
