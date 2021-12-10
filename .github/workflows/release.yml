@@ -44,6 +44,10 @@ jobs:
           git lfs version
           echo "Amount of free and used memory:"
           free -h
+      - name: Install action modules
+        run: |
+          cd ${{GITHUB_WORKSPACE}}/download-release-action
+          npm i
       - name: Download release
         uses: ./download-release-action
         id: hello
