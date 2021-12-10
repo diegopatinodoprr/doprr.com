@@ -52,10 +52,12 @@ jobs:
         uses: ./download-release-action
         id: hello
         with:
-          who-to-greet: "Mona the Octocat"
+          repo_token: ${{ env.GITHUB_TOKEN }}
+          repo: "doprr.com"
+          owner: "diegopatinodoprr"
       # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "The time was ${{ steps.hello.outputs.release }}"
 #      - name: Checkout the repository
 #        uses: actions/checkout@v2
 #      - name: Setup nodejs ${{ env.NODE_VERSION }}

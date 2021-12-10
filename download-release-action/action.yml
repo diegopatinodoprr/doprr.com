@@ -1,13 +1,25 @@
 name: "Download Release"
-description: "Greet someone and record the time"
+description: "Get lestes release an ddownload It"
+
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  repo_token:
+    description: "Le token github"
     required: true
-    default: "World"
+  owner:
+    description: "The Github user or organization that owns the repository"
+    required: false
+  repo:
+    description: "The repository name"
+    required: false
+  repository:
+    description: "The repository name in full"
+    required: false
+  excludes:
+    description: "Types of releases to exclude (e.g. pre-release)"
+    required: false
 outputs:
-  time: # id of output
-    description: "The time we greeted you"
+  release:
+    description: "Latest release"
 runs:
   using: "node12"
   main: "index.js"
