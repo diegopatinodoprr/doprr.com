@@ -6,7 +6,7 @@ on:
         required: false
         options: ["major", "minor", "patch"]
         default: "patch"
-name: Generate new Version of QBP SERVICE
+name: DOPRRR release
 jobs:
   build:
     name: Build , update Version an publish to Prod server
@@ -43,7 +43,7 @@ jobs:
           echo "Amount of free and used memory:"
           free -h
       - name: Download release
-        uses: diegopatinodoprr/doprr.com/download-release-action@v1.1
+        uses: ./download-release-action
         id: hello
         with:
           who-to-greet: "Mona the Octocat"
