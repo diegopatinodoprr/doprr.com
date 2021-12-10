@@ -36,7 +36,7 @@ async function run() {
         if (releases.length) {
             var releaseObj = releases[0]
             core.setOutput('name', releaseObj.name)
-            core.setOutput('tarball_url', releaseObj.releaseObj)
+            core.setOutput('tarball_url', releaseObj.tarball_url)
             core.setOutput('zipball_url', releaseObj.zipball_url)
 
 
