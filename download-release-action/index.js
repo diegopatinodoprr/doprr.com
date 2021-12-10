@@ -21,7 +21,7 @@ async function run() {
             [owner, repo] = repository.split("/");
         }
         var authentication = await auth();
-        var releases = await octokit.repo.listReleases({
+        var releases = await octokit.repos.listReleases({
             owner: owner,
             repo: repo,
             headers: authentication.headers

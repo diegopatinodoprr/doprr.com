@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
       - name: Display runner information
         run: |
           echo ${{github.actor}}
