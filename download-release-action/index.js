@@ -34,7 +34,13 @@ async function run() {
             releases = releases.filter(x => x.draft != true);
         }
         if (releases.length) {
-            core.setOutput('release', releases[0])
+            var releaseObj = releases[0]
+            core.setOutput('name', releaseObj.name)
+            core.setOutput('tarball_url', releaseObj.releaseObj)
+            core.setOutput('zipball_url', releaseObj.zipball_url)
+
+
+
         } else {
             core.setFailed("No valid releases");
         }

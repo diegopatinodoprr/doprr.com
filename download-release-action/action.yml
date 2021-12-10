@@ -18,8 +18,12 @@ inputs:
     description: "Types of releases to exclude (e.g. pre-release)"
     required: false
 outputs:
-  release:
-    description: "Latest release"
+  name:
+    description: "Release Name"
+  tarball_url:
+    description: "Release tarbal download url"
+  zipball_url:
+    description: "Release zip download url"
 runs:
   using: "node12"
   main: "index.js"

@@ -57,32 +57,25 @@ jobs:
           repo_token: ${{ env.GITHUB_TOKEN }}
           repo: "doprr.com"
           owner: "diegopatinodoprr"
-      # Use the output from the `hello` step
+
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.release }}"
-#      - name: Checkout the repository
-#        uses: actions/checkout@v2
-#      - name: Setup nodejs ${{ env.NODE_VERSION }}
-#        uses: actions/setup-node@v1
-#        with:
-#          node-version: ${{ env.NODE_VERSION }}
-#      - name: Generate new Version
-#        run: |
-#          cd $GITHUB_WORKSPACE/front
-#          npm --no-git-tag-version version ${{env.VERSION_TYPE}}
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.DOPRR_TOKEN }}
-#      - name: Npm CI installpackage from package-lock.json
-#        run: |
-#          echo "//npm.pkg.github.com/:_authToken=${{ secrets.DOPRR_TOKEN }}" > ~/.npmrc
-#          npm ci
-#      - name: Check code build
-#        run: |
-#          npm run build
-#      - name: Create release from latest Tag
-#        uses: "marvinpinto/action-automatic-releases@latest"
-#        with:
-#          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-#          automatic_release_tag: "latest"
-#          prerelease: false
-#          title: "QBP SERVICE release ${{ env.VERSION_TAG }}"
+        run: |
+          echo "Release name: ${{ steps.hello.outputs.name }}"
+          echo "Release download tar: ${{ steps.hello.outputs.tarball_url }}"
+          echo "Release download zip:  ${{ steps.hello.outputs.zipball_url }}"
+      - name: Download release
+        uses: robinraju/release-downloader@v1.3
+        with:
+          repository: "diegopatinodoprr/doprr.com"
+          latest: true
+          fileName: "doprr.zip"
+      - uses: montudor/action-zip@v1
+        with:
+          args: unzip -qq doprr.zip -d unzipedFiles
+      - name: Display unzip results
+        run: |
+          echo ls -als
+          echo dir
+          echo dir unzipedFiles
+
+#
