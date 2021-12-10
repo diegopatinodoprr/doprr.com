@@ -18,6 +18,8 @@ jobs:
       VERSION_TYPE: "patch"
       VERSION_TAG: ""
     steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
       - name: Display runner information
         run: |
           echo ${{github.actor}}
