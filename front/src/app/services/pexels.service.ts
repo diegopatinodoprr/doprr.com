@@ -13,19 +13,28 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class PexelsService {
+  // #region Constructors (1)
+
   constructor(private http: HttpClient) {}
 
+  // #endregion Constructors (1)
+
+  // #region Public Methods (2)
+
   public getdata(search: string, perPage: number): Observable<any> {
-    const url =
+    const url =`
       'https://api.pexels.com/v1/search?query=' +
-      search +
+      ${search} +
       '&per_page=' +
-      perPage;
+      ${perPage}`;
     return this.http
       .get<any>(url, httpOptions)
       .pipe(catchError(this.handelError));
   }
+
   public handelError(error: Error) {
     return throwError(error.message || 'Server Error');
   }
+
+  // #endregion Public Methods (2)
 }
