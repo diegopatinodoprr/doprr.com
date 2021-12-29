@@ -1,24 +1,27 @@
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: "the Version : major, minor, patch, prerelease"
-        required: false
-        options: ["major", "minor", "patch"]
-        default: "patch"
       name:
         type: choice
-        description: Who to greet
+        description: Who to deploy
         options: 
-        - monalisa
-        - cschleiden
-      message:
-        required: true
-      use-emoji:
+        - PROD
+        - DEV
+     
+      qbp_admin:
         type: boolean
-        description: Include 🎉🤣 emojis
-      environment:
-        type: environment
+        description: deployer l'admin
+      qbp_admin_seller:
+        type: boolean
+        default: 'true' 
+        description: deployer l'admin_seller
+      qbp:
+        type: boolean
+        description: deployer le front
+      qbp_service:
+        type: boolean
+        description: deployer le service
+    
 name: DOPRRR release
 jobs:
   build:
