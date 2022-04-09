@@ -157,3 +157,5 @@ dist
 r3-service/confs/
 **/*.tgz
 **/*.*/*.tgz
+front/.angular
+front/node_modules
