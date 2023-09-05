@@ -1,7 +1,0 @@
-{
-  "apps": [
-    {
-      "styles": ["styles.css", "theme.scss", "./assets/fonts/fontSocial.css"]
-    }
-  ]
-}
